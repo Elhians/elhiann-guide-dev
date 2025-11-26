@@ -13,7 +13,9 @@ import {
   Terminal,
   Rocket,
   Lightbulb,
-  ExternalLink
+  ExternalLink,
+  Shield,
+  Sparkles
 } from "lucide-react";
 import { Card } from "@/components/ui/card";
 
@@ -255,7 +257,7 @@ const Index = () => {
                   </p>
                 </div>
 
-                <div className="grid gap-6 sm:grid-cols-2">
+                <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
                   <Card className="group overflow-hidden bg-gradient-to-br from-card to-muted/20 p-6 hover-lift">
                     <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 text-primary">
                       <Palette className="h-5 w-5" />
@@ -353,6 +355,66 @@ const Index = () => {
                         className="flex items-center gap-2 text-sm font-medium text-primary hover:underline"
                       >
                         Netlify Guide
+                        <ExternalLink className="h-3.5 w-3.5" />
+                      </a>
+                    </div>
+                  </Card>
+
+                  <Card className="group overflow-hidden bg-gradient-to-br from-card to-muted/20 p-6 hover-lift">
+                    <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-lg bg-secondary/10 text-secondary">
+                      <Shield className="h-5 w-5" />
+                    </div>
+                    <h3 className="mb-2 text-xl font-bold">Cybersécurité</h3>
+                    <p className="mb-4 text-sm text-muted-foreground">
+                      Sécurisez vos applications et comprenez les failles
+                    </p>
+                    <div className="space-y-2">
+                      <a
+                        href="https://owasp.org/www-project-top-ten/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-2 text-sm font-medium text-secondary hover:underline"
+                      >
+                        OWASP Top 10
+                        <ExternalLink className="h-3.5 w-3.5" />
+                      </a>
+                      <a
+                        href="https://portswigger.net/web-security"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-2 text-sm font-medium text-secondary hover:underline"
+                      >
+                        Web Security Academy
+                        <ExternalLink className="h-3.5 w-3.5" />
+                      </a>
+                    </div>
+                  </Card>
+
+                  <Card className="group overflow-hidden bg-gradient-to-br from-card to-muted/20 p-6 hover-lift">
+                    <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-lg bg-accent/10 text-accent">
+                      <Sparkles className="h-5 w-5" />
+                    </div>
+                    <h3 className="mb-2 text-xl font-bold">Intelligence Artificielle</h3>
+                    <p className="mb-4 text-sm text-muted-foreground">
+                      Intégrez l'IA dans vos applications modernes
+                    </p>
+                    <div className="space-y-2">
+                      <a
+                        href="https://platform.openai.com/docs/introduction"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-2 text-sm font-medium text-accent hover:underline"
+                      >
+                        OpenAI Documentation
+                        <ExternalLink className="h-3.5 w-3.5" />
+                      </a>
+                      <a
+                        href="https://www.deeplearning.ai/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-2 text-sm font-medium text-accent hover:underline"
+                      >
+                        DeepLearning.AI
                         <ExternalLink className="h-3.5 w-3.5" />
                       </a>
                     </div>
