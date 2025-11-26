@@ -366,8 +366,26 @@ const Index = () => {
                     </div>
                     <h3 className="mb-2 text-xl font-bold">Cybersécurité</h3>
                     <p className="mb-4 text-sm text-muted-foreground">
-                      Sécurisez vos applications et comprenez les failles
+                      Très utile même pour les devs, surtout pour les futurs seniors
                     </p>
+                    <div className="mb-3 space-y-1 text-xs text-muted-foreground">
+                      <p className="flex gap-2">
+                        <span className="text-secondary">•</span>
+                        XSS & SQL Injection
+                      </p>
+                      <p className="flex gap-2">
+                        <span className="text-secondary">•</span>
+                        Hashing / salage
+                      </p>
+                      <p className="flex gap-2">
+                        <span className="text-secondary">•</span>
+                        API Security basics
+                      </p>
+                      <p className="flex gap-2">
+                        <span className="text-secondary">•</span>
+                        SSL/TLS
+                      </p>
+                    </div>
                     <div className="space-y-2">
                       <a
                         href="https://owasp.org/www-project-top-ten/"
@@ -379,12 +397,21 @@ const Index = () => {
                         <ExternalLink className="h-3.5 w-3.5" />
                       </a>
                       <a
-                        href="https://portswigger.net/web-security"
+                        href="https://tryhackme.com"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="flex items-center gap-2 text-sm font-medium text-secondary hover:underline"
                       >
-                        Web Security Academy
+                        TryHackMe Beginner Path
+                        <ExternalLink className="h-3.5 w-3.5" />
+                      </a>
+                      <a
+                        href="https://gchq.github.io/CyberChef"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-2 text-sm font-medium text-secondary hover:underline"
+                      >
+                        CyberChef
                         <ExternalLink className="h-3.5 w-3.5" />
                       </a>
                     </div>
@@ -396,25 +423,43 @@ const Index = () => {
                     </div>
                     <h3 className="mb-2 text-xl font-bold">Intelligence Artificielle</h3>
                     <p className="mb-4 text-sm text-muted-foreground">
-                      Intégrez l'IA dans vos applications modernes
+                      Machine Learning, Deep Learning et IA moderne
                     </p>
                     <div className="space-y-2">
                       <a
-                        href="https://platform.openai.com/docs/introduction"
+                        href="https://www.youtube.com/watch?v=kqtD5dpn9C8"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="flex items-center gap-2 text-sm font-medium text-accent hover:underline"
                       >
-                        OpenAI Documentation
+                        Python pour l'IA
                         <ExternalLink className="h-3.5 w-3.5" />
                       </a>
                       <a
-                        href="https://www.deeplearning.ai/"
+                        href="https://www.youtube.com/watch?v=Gv9_4yMHFhI"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="flex items-center gap-2 text-sm font-medium text-accent hover:underline"
                       >
-                        DeepLearning.AI
+                        Machine Learning
+                        <ExternalLink className="h-3.5 w-3.5" />
+                      </a>
+                      <a
+                        href="https://course.fast.ai/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-2 text-sm font-medium text-accent hover:underline"
+                      >
+                        FastAI Course
+                        <ExternalLink className="h-3.5 w-3.5" />
+                      </a>
+                      <a
+                        href="https://www.tensorflow.org/resources/learn-ml"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-2 text-sm font-medium text-accent hover:underline"
+                      >
+                        TensorFlow Learn ML
                         <ExternalLink className="h-3.5 w-3.5" />
                       </a>
                     </div>
