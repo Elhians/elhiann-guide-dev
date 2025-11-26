@@ -3,6 +3,7 @@ import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
 import { LearningSection } from "@/components/LearningSection";
 import { TimelineItem } from "@/components/TimelineItem";
+import { CodeExample } from "@/components/CodeExample";
 import { 
   BookOpen, 
   Users, 
@@ -15,7 +16,8 @@ import {
   Lightbulb,
   ExternalLink,
   Shield,
-  Sparkles
+  Sparkles,
+  Code
 } from "lucide-react";
 import { Card } from "@/components/ui/card";
 
@@ -33,11 +35,11 @@ const Index = () => {
           title="Bonnes pratiques pour apprendre"
           description="Les fondamentaux pour progresser efficacement dans votre apprentissage du développement."
           goals={[
-            { title: "Construire des projets, même petits" },
+            { title: "Construire des projets, même petits", milestone: true },
             { title: "Toujours lire la documentation officielle" },
             { title: "Découper les problèmes en petites parties" },
             { title: "Refaire régulièrement ce qu'on a appris" },
-            { title: "Travailler en équipe (pair programming)" },
+            { title: "Travailler en équipe (pair programming)", milestone: true },
           ]}
           resources={[
             { title: "Comment bien apprendre à coder", url: "https://www.youtube.com/watch?v=D9M66IseQwc" },
@@ -81,10 +83,10 @@ const Index = () => {
           title="Git & GitHub"
           description="L'outil OBLIGATOIRE pour tout développeur moderne."
           goals={[
-            { title: "Savoir créer un repo" },
+            { title: "Savoir créer un repo", milestone: true },
             { title: "Faire des commits propres" },
             { title: "Créer une branche" },
-            { title: "Faire une pull request" },
+            { title: "Faire une pull request", milestone: true },
             { title: "Résoudre des conflits" },
           ]}
           resources={[
@@ -140,34 +142,114 @@ const Index = () => {
                   />
                 </div>
 
-                <Card className="mt-8 bg-primary/5 p-6">
-                  <h3 className="mb-3 flex items-center gap-2 text-lg font-semibold">
-                    <BookOpen className="h-5 w-5 text-primary" />
-                    Objectifs Front-End
+                <div className="mt-8 grid gap-6 lg:grid-cols-2">
+                  <Card className="bg-primary/5 p-6">
+                    <h3 className="mb-3 flex items-center gap-2 text-lg font-semibold">
+                      <BookOpen className="h-5 w-5 text-primary" />
+                      Objectifs Front-End
+                    </h3>
+                    <ul className="space-y-2 text-sm text-muted-foreground">
+                      <li className="flex gap-2">
+                        <span className="text-primary">•</span>
+                        Créer des pages responsives
+                      </li>
+                      <li className="flex gap-2">
+                        <span className="text-primary">•</span>
+                        Comprendre DOM, events, fetch()
+                      </li>
+                      <li className="flex gap-2">
+                        <span className="text-primary">•</span>
+                        Savoir faire des composants
+                      </li>
+                      <li className="flex gap-2">
+                        <span className="text-primary">•</span>
+                        Routing et appels API
+                      </li>
+                      <li className="flex gap-2">
+                        <span className="text-primary">•</span>
+                        Gestion d'état (Redux/Zustand/Context)
+                      </li>
+                    </ul>
+                  </Card>
+
+                  <Card className="bg-gradient-to-br from-primary/10 to-secondary/10 p-6">
+                    <h3 className="mb-3 flex items-center gap-2 text-lg font-semibold">
+                      <Rocket className="h-5 w-5 text-primary" />
+                      Projets Pratiques Front-End
+                    </h3>
+                    <ul className="space-y-2 text-sm text-muted-foreground">
+                      <li className="flex gap-2">
+                        <span className="text-primary">1.</span>
+                        <span><strong>Todo List avec filtres</strong> - LocalStorage, événements</span>
+                      </li>
+                      <li className="flex gap-2">
+                        <span className="text-primary">2.</span>
+                        <span><strong>API Weather App</strong> - Fetch API, gestion async</span>
+                      </li>
+                      <li className="flex gap-2">
+                        <span className="text-primary">3.</span>
+                        <span><strong>Portfolio personnel</strong> - Responsive design, animations</span>
+                      </li>
+                      <li className="flex gap-2">
+                        <span className="text-primary">4.</span>
+                        <span><strong>Blog avec React</strong> - Routing, composants, state</span>
+                      </li>
+                      <li className="flex gap-2">
+                        <span className="text-primary">5.</span>
+                        <span><strong>E-commerce frontend</strong> - Panier, filtres, Redux</span>
+                      </li>
+                    </ul>
+                  </Card>
+                </div>
+
+                {/* Code Examples */}
+                <div className="mt-6 space-y-4">
+                  <h3 className="text-xl font-semibold flex items-center gap-2">
+                    <Code className="h-5 w-5 text-primary" />
+                    Exemples de Code
                   </h3>
-                  <ul className="space-y-2 text-sm text-muted-foreground">
-                    <li className="flex gap-2">
-                      <span className="text-primary">•</span>
-                      Créer des pages responsives
-                    </li>
-                    <li className="flex gap-2">
-                      <span className="text-primary">•</span>
-                      Comprendre DOM, events, fetch()
-                    </li>
-                    <li className="flex gap-2">
-                      <span className="text-primary">•</span>
-                      Savoir faire des composants
-                    </li>
-                    <li className="flex gap-2">
-                      <span className="text-primary">•</span>
-                      Routing et appels API
-                    </li>
-                    <li className="flex gap-2">
-                      <span className="text-primary">•</span>
-                      Gestion d'état (Redux/Zustand/Context)
-                    </li>
-                  </ul>
-                </Card>
+                  
+                  <CodeExample
+                    title="Fetch API avec async/await"
+                    description="Appel API moderne et gestion d'erreurs"
+                    code={`async function fetchUserData(userId) {
+  try {
+    const response = await fetch(\`/api/users/\${userId}\`);
+    if (!response.ok) {
+      throw new Error('Erreur réseau');
+    }
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error('Erreur:', error);
+    throw error;
+  }
+}`}
+                  />
+
+                  <CodeExample
+                    title="Composant React avec hooks"
+                    description="State, effet et rendu conditionnel"
+                    code={`import { useState, useEffect } from 'react';
+
+function UserProfile({ userId }) {
+  const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function loadUser() {
+      const data = await fetchUserData(userId);
+      setUser(data);
+      setLoading(false);
+    }
+    loadUser();
+  }, [userId]);
+
+  if (loading) return <div>Chargement...</div>;
+  return <div>Bonjour {user.name}</div>;
+}`}
+                  />
+                </div>
               </div>
             </div>
           </section>
@@ -214,30 +296,133 @@ const Index = () => {
                 />
               </div>
 
-              <Card className="mt-8 bg-secondary/5 p-6">
-                <h3 className="mb-3 flex items-center gap-2 text-lg font-semibold">
-                  <Server className="h-5 w-5 text-secondary" />
-                  Objectifs Back-End
+              <div className="mt-8 grid gap-6 lg:grid-cols-2">
+                <Card className="bg-secondary/5 p-6">
+                  <h3 className="mb-3 flex items-center gap-2 text-lg font-semibold">
+                    <Server className="h-5 w-5 text-secondary" />
+                    Objectifs Back-End
+                  </h3>
+                  <ul className="space-y-2 text-sm text-muted-foreground">
+                    <li className="flex gap-2">
+                      <span className="text-secondary">•</span>
+                      Créer une API CRUD complète
+                    </li>
+                    <li className="flex gap-2">
+                      <span className="text-secondary">•</span>
+                      Se connecter à une base SQL
+                    </li>
+                    <li className="flex gap-2">
+                      <span className="text-secondary">•</span>
+                      Implémenter l'authentification
+                    </li>
+                    <li className="flex gap-2">
+                      <span className="text-secondary">•</span>
+                      Gérer l'upload de fichiers
+                    </li>
+                  </ul>
+                </Card>
+
+                <Card className="bg-gradient-to-br from-secondary/10 to-accent/10 p-6">
+                  <h3 className="mb-3 flex items-center gap-2 text-lg font-semibold">
+                    <Rocket className="h-5 w-5 text-secondary" />
+                    Projets Pratiques Back-End
+                  </h3>
+                  <ul className="space-y-2 text-sm text-muted-foreground">
+                    <li className="flex gap-2">
+                      <span className="text-secondary">1.</span>
+                      <span><strong>API REST Blog</strong> - CRUD, validation, erreurs</span>
+                    </li>
+                    <li className="flex gap-2">
+                      <span className="text-secondary">2.</span>
+                      <span><strong>Auth système complet</strong> - JWT, bcrypt, refresh tokens</span>
+                    </li>
+                    <li className="flex gap-2">
+                      <span className="text-secondary">3.</span>
+                      <span><strong>Upload & Storage</strong> - Multer, S3, compression</span>
+                    </li>
+                    <li className="flex gap-2">
+                      <span className="text-secondary">4.</span>
+                      <span><strong>API E-commerce</strong> - Panier, paiement, webhooks</span>
+                    </li>
+                    <li className="flex gap-2">
+                      <span className="text-secondary">5.</span>
+                      <span><strong>Real-time Chat</strong> - WebSockets, Socket.io</span>
+                    </li>
+                  </ul>
+                </Card>
+              </div>
+
+              {/* Code Examples Backend */}
+              <div className="mt-6 space-y-4">
+                <h3 className="text-xl font-semibold flex items-center gap-2">
+                  <Code className="h-5 w-5 text-secondary" />
+                  Exemples de Code Back-End
                 </h3>
-                <ul className="space-y-2 text-sm text-muted-foreground">
-                  <li className="flex gap-2">
-                    <span className="text-secondary">•</span>
-                    Créer une API CRUD complète
-                  </li>
-                  <li className="flex gap-2">
-                    <span className="text-secondary">•</span>
-                    Se connecter à une base SQL
-                  </li>
-                  <li className="flex gap-2">
-                    <span className="text-secondary">•</span>
-                    Implémenter l'authentification
-                  </li>
-                  <li className="flex gap-2">
-                    <span className="text-secondary">•</span>
-                    Gérer l'upload de fichiers
-                  </li>
-                </ul>
-              </Card>
+                
+                <CodeExample
+                  title="Route Express avec validation"
+                  description="CRUD endpoint avec middleware et validation"
+                  code={`const express = require('express');
+const router = express.Router();
+
+// Middleware de validation
+const validateUser = (req, res, next) => {
+  const { email, password } = req.body;
+  if (!email || !password) {
+    return res.status(400).json({ 
+      error: 'Email et password requis' 
+    });
+  }
+  next();
+};
+
+// Route POST avec validation
+router.post('/users', validateUser, async (req, res) => {
+  try {
+    const user = await User.create(req.body);
+    res.status(201).json(user);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});`}
+                />
+
+                <CodeExample
+                  title="JWT Authentication"
+                  description="Génération et vérification de tokens"
+                  code={`const jwt = require('jsonwebtoken');
+const bcrypt = require('bcrypt');
+
+// Génération du token
+async function login(email, password) {
+  const user = await User.findOne({ email });
+  if (!user) throw new Error('User not found');
+  
+  const valid = await bcrypt.compare(password, user.password);
+  if (!valid) throw new Error('Invalid password');
+  
+  const token = jwt.sign(
+    { userId: user.id, email: user.email },
+    process.env.JWT_SECRET,
+    { expiresIn: '24h' }
+  );
+  
+  return { token, user };
+}
+
+// Middleware de vérification
+function authenticateToken(req, res, next) {
+  const token = req.headers['authorization']?.split(' ')[1];
+  if (!token) return res.sendStatus(401);
+  
+  jwt.verify(token, process.env.JWT_SECRET, (err, user) => {
+    if (err) return res.sendStatus(403);
+    req.user = user;
+    next();
+  });
+}`}
+                />
+              </div>
             </div>
           </div>
         </section>
@@ -365,7 +550,7 @@ const Index = () => {
                       <Shield className="h-5 w-5" />
                     </div>
                     <h3 className="mb-2 text-xl font-bold">Cybersécurité</h3>
-                    <p className="mb-4 text-sm text-muted-foreground">
+                    <p className="mb-3 text-sm text-muted-foreground">
                       Très utile même pour les devs, surtout pour les futurs seniors
                     </p>
                     <div className="mb-3 space-y-1 text-xs text-muted-foreground">
@@ -379,12 +564,16 @@ const Index = () => {
                       </p>
                       <p className="flex gap-2">
                         <span className="text-secondary">•</span>
-                        API Security basics
+                        API Security basics & SSL/TLS
                       </p>
-                      <p className="flex gap-2">
-                        <span className="text-secondary">•</span>
-                        SSL/TLS
-                      </p>
+                    </div>
+                    <div className="mb-3 rounded-lg bg-secondary/5 p-3">
+                      <p className="mb-1 text-xs font-semibold text-secondary">Side-Projects:</p>
+                      <ul className="space-y-1 text-xs text-muted-foreground">
+                        <li>• Sécuriser API avec rate-limit</li>
+                        <li>• Ajouter JWT sécurisé</li>
+                        <li>• Page vulnérable → réparer</li>
+                      </ul>
                     </div>
                     <div className="space-y-2">
                       <a

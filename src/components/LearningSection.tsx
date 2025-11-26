@@ -1,9 +1,10 @@
 import { ReactNode } from "react";
 import { Card } from "@/components/ui/card";
-import { ExternalLink, Check } from "lucide-react";
+import { ExternalLink, Check, Target } from "lucide-react";
 
 interface LearningGoal {
   title: string;
+  milestone?: boolean;
 }
 
 interface Resource {
@@ -58,8 +59,14 @@ export const LearningSection = ({
               <ul className="space-y-3">
                 {goals.map((goal, index) => (
                   <li key={index} className="flex items-start gap-3">
-                    <div className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
-                    <span className="text-muted-foreground">{goal.title}</span>
+                    {goal.milestone ? (
+                      <Target className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
+                    ) : (
+                      <div className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
+                    )}
+                    <span className={goal.milestone ? "font-medium text-foreground" : "text-muted-foreground"}>
+                      {goal.title}
+                    </span>
                   </li>
                 ))}
               </ul>
