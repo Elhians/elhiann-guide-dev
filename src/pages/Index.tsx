@@ -3,7 +3,6 @@ import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
 import { LearningSection } from "@/components/LearningSection";
 import { TimelineItem } from "@/components/TimelineItem";
-import { CodeExample } from "@/components/CodeExample";
 import { 
   BookOpen, 
   Users, 
@@ -17,7 +16,8 @@ import {
   ExternalLink,
   Shield,
   Sparkles,
-  Code
+  CheckCircle,
+  Share2
 } from "lucide-react";
 import { Card } from "@/components/ui/card";
 
@@ -201,55 +201,6 @@ const Index = () => {
                     </ul>
                   </Card>
                 </div>
-
-                {/* Code Examples */}
-                <div className="mt-6 space-y-4">
-                  <h3 className="text-xl font-semibold flex items-center gap-2">
-                    <Code className="h-5 w-5 text-primary" />
-                    Exemples de Code
-                  </h3>
-                  
-                  <CodeExample
-                    title="Fetch API avec async/await"
-                    description="Appel API moderne et gestion d'erreurs"
-                    code={`async function fetchUserData(userId) {
-  try {
-    const response = await fetch(\`/api/users/\${userId}\`);
-    if (!response.ok) {
-      throw new Error('Erreur réseau');
-    }
-    const data = await response.json();
-    return data;
-  } catch (error) {
-    console.error('Erreur:', error);
-    throw error;
-  }
-}`}
-                  />
-
-                  <CodeExample
-                    title="Composant React avec hooks"
-                    description="State, effet et rendu conditionnel"
-                    code={`import { useState, useEffect } from 'react';
-
-function UserProfile({ userId }) {
-  const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    async function loadUser() {
-      const data = await fetchUserData(userId);
-      setUser(data);
-      setLoading(false);
-    }
-    loadUser();
-  }, [userId]);
-
-  if (loading) return <div>Chargement...</div>;
-  return <div>Bonjour {user.name}</div>;
-}`}
-                  />
-                </div>
               </div>
             </div>
           </section>
@@ -350,78 +301,6 @@ function UserProfile({ userId }) {
                     </li>
                   </ul>
                 </Card>
-              </div>
-
-              {/* Code Examples Backend */}
-              <div className="mt-6 space-y-4">
-                <h3 className="text-xl font-semibold flex items-center gap-2">
-                  <Code className="h-5 w-5 text-secondary" />
-                  Exemples de Code Back-End
-                </h3>
-                
-                <CodeExample
-                  title="Route Express avec validation"
-                  description="CRUD endpoint avec middleware et validation"
-                  code={`const express = require('express');
-const router = express.Router();
-
-// Middleware de validation
-const validateUser = (req, res, next) => {
-  const { email, password } = req.body;
-  if (!email || !password) {
-    return res.status(400).json({ 
-      error: 'Email et password requis' 
-    });
-  }
-  next();
-};
-
-// Route POST avec validation
-router.post('/users', validateUser, async (req, res) => {
-  try {
-    const user = await User.create(req.body);
-    res.status(201).json(user);
-  } catch (error) {
-    res.status(500).json({ error: error.message });
-  }
-});`}
-                />
-
-                <CodeExample
-                  title="JWT Authentication"
-                  description="Génération et vérification de tokens"
-                  code={`const jwt = require('jsonwebtoken');
-const bcrypt = require('bcrypt');
-
-// Génération du token
-async function login(email, password) {
-  const user = await User.findOne({ email });
-  if (!user) throw new Error('User not found');
-  
-  const valid = await bcrypt.compare(password, user.password);
-  if (!valid) throw new Error('Invalid password');
-  
-  const token = jwt.sign(
-    { userId: user.id, email: user.email },
-    process.env.JWT_SECRET,
-    { expiresIn: '24h' }
-  );
-  
-  return { token, user };
-}
-
-// Middleware de vérification
-function authenticateToken(req, res, next) {
-  const token = req.headers['authorization']?.split(' ')[1];
-  if (!token) return res.sendStatus(401);
-  
-  jwt.verify(token, process.env.JWT_SECRET, (err, user) => {
-    if (err) return res.sendStatus(403);
-    req.user = user;
-    next();
-  });
-}`}
-                />
               </div>
             </div>
           </div>
@@ -653,6 +532,50 @@ function authenticateToken(req, res, next) {
                       </a>
                     </div>
                   </Card>
+                  <Card className="group overflow-hidden bg-gradient-to-br from-card to-muted/20 p-6 hover-lift">
+                    <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-lg bg-accent/10 text-accent">
+                      <Sparkles className="h-5 w-5" />
+                    </div>
+                    <h3 className="mb-2 text-xl font-bold">Conseils généraux</h3>
+                    <ul className="space-y-3">
+                      <li className="flex items-start gap-3">
+                        <CheckCircle className="h-5 w-5 text-amber-500 mt-0.5 flex-shrink-0" />
+                        <span className="text-sm text-muted-foreground">Construis des projets, même petits.</span>
+                      </li>
+                      <li className="flex items-start gap-3">
+                        <GitBranch className="h-5 w-5 text-amber-500 mt-0.5 flex-shrink-0" />
+                        <span className="text-sm text-muted-foreground">Mets-les sur GitHub.</span>
+                      </li>
+                      <li className="flex items-start gap-3">
+                        <Rocket className="h-5 w-5 text-amber-500 mt-0.5 flex-shrink-0" />
+                        <span className="text-sm text-muted-foreground">Déploie-les (Vercel, Netlify, Render, Railway).</span>
+                      </li>
+                      <li className="flex items-start gap-3">
+                        <Share2 className="h-5 w-5 text-amber-500 mt-0.5 flex-shrink-0" />
+                        <span className="text-sm text-muted-foreground">Partage ton progrès sur LinkedIn.</span>
+                      </li>
+                    </ul>
+                  </Card>
+                  <Card className="group overflow-hidden bg-gradient-to-br from-card to-muted/20 p-6 hover-lift">
+                    <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-lg bg-accent/10 text-accent">
+                      <Sparkles className="h-5 w-5" />
+                    </div>
+                    <h3 className="mb-2 text-xl font-bold">La palteforme CodinGame</h3>
+                    <p className="mb-4 text-sm text-muted-foreground">
+                      Defiez-vous entre amis a des challenges de programmation!
+                    </p>
+                    <div className="space-y-2">
+                      <a
+                        href="https://www.codingame.com/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-2 text-sm font-medium text-accent hover:underline"
+                      >
+                        CodinGame
+                        <ExternalLink className="h-3.5 w-3.5" />
+                      </a>
+                    </div>
+                  </Card>
                 </div>
               </div>
             </div>
@@ -665,6 +588,9 @@ function authenticateToken(req, res, next) {
             <div className="text-center">
               <p className="text-sm text-muted-foreground">
                 Guide créé pour aider les aspirants développeurs dans leur parcours d'apprentissage.
+              </p>
+              <p className="mt-2 text-sm text-muted-foreground">
+                Dernier conseil : construisez petit, mais construisez souvent.Chaque petit projet = une ligne de plus dans votre CV + une compétence en plus.
               </p>
               <p className="mt-2 text-sm text-muted-foreground">
                 Bonne chance dans votre aventure du code ! 🚀
